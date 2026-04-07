@@ -57,4 +57,15 @@ TimeDraft isn't just a grid of dates—it's a productivity tool designed with a 
 
 ---
 
-*Built with ❤️ for a premium user experience.*
+## Images
+
+<img width="1915" height="909" alt="image" src="https://github.com/user-attachments/assets/ef1a11c3-40eb-4fa2-a72f-d6c3b05a7c3a" />
+
+
+<img width="1919" height="951" alt="image" src="https://github.com/user-attachments/assets/4b0be01d-e691-4e5a-850e-d4d18f2384dd" />
+
+
+<img width="1919" height="917" alt="image" src="https://github.com/user-attachments/assets/8dc48537-c1b8-4025-8f3b-22be79c8c217" />
+
+
+
