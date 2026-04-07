@@ -8,8 +8,6 @@
   background: var(--bg-base);
   transition: background var(--transition-slow);
 }
-
-/* Desktop: side-by-side */
 .calendarWrapper {
   display: grid;
   grid-template-columns: 300px 1fr;
@@ -19,27 +17,21 @@
   max-width: 960px;
   align-items: start;
 }
-
-/* LEFT: hero panel fills full height */
 .leftCol {
   display: flex;
   flex-direction: column;
   gap: var(--sp-3);
   height: 100%;
 }
-
 .heroWrap {
   flex: 1;
   min-height: 380px;
 }
-
-/* RIGHT: calendar + notes + action bar */
 .rightCol {
   display: flex;
   flex-direction: column;
   gap: var(--sp-2);
 }
-
 .calendarCard {
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
@@ -48,8 +40,6 @@
   box-shadow: var(--shadow-md);
   transition: background var(--transition-slow);
 }
-
-/* Decorative wire top — like physical wall calendar */
 .wireBar {
   display: flex;
   align-items: center;
@@ -59,15 +49,12 @@
   margin-bottom: var(--sp-2);
   opacity: 0.25;
 }
-
 .wireLoop {
   width: 16px;
   height: 16px;
   border-radius: 50%;
   border: 2px solid var(--text-secondary);
 }
-
-/* Tablet: compressed side-by-side */
 @media (max-width: 1023px) {
   .calendarWrapper {
     grid-template-columns: 260px 1fr;
@@ -76,14 +63,11 @@
   }
   .heroWrap { min-height: 380px; }
 }
-
-/* Mobile: stacked */
 @media (max-width: 767px) {
   .page {
     padding: var(--sp-3);
     justify-content: flex-start;
   }
-
   .calendarWrapper {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -94,18 +78,14 @@
     gap: var(--sp-3);
     max-width: 480px;
   }
-
   .leftCol {
     grid-area: hero;
     height: auto;
   }
-
   .heroWrap { min-height: 200px; flex: none; }
-
   .rightCol {
     grid-area: cal;
   }
-
   .calendarCard {
     padding: var(--sp-4);
     border-radius: var(--radius-lg);

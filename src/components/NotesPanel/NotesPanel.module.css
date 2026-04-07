@@ -6,15 +6,12 @@
   border-radius: var(--radius-lg);
   overflow: hidden;
 }
-
-/* Tab bar */
 .tabs {
   display: flex;
   border-bottom: 1px solid var(--border-subtle);
   background: var(--bg-elevated);
   flex-shrink: 0;
 }
-
 .tab {
   flex: 1;
   display: flex;
@@ -32,24 +29,20 @@
   transition: all var(--transition-fast);
   white-space: nowrap;
 }
-
 .tab:hover {
   color: var(--text-primary);
   background: var(--bg-hover);
 }
-
 .tab.active {
   color: var(--accent);
   border-bottom-color: var(--accent);
   background: var(--bg-surface);
 }
-
 .tab svg {
   width: 13px;
   height: 13px;
   flex-shrink: 0;
 }
-
 .badge {
   display: inline-flex;
   align-items: center;
@@ -63,8 +56,6 @@
   font-weight: 700;
   flex-shrink: 0;
 }
-
-/* Tab content area */
 .content {
   flex: 1;
   overflow-y: auto;
@@ -72,8 +63,6 @@
   min-height: 0;
   max-height: 180px;
 }
-
-/* Monthly textarea */
 .monthlyArea {
   width: 100%;
   resize: none;
@@ -88,24 +77,19 @@
   min-height: 50px;
   transition: border-color var(--transition-fast);
 }
-
 .monthlyArea:focus {
   outline: none;
   border-color: var(--accent);
   box-shadow: 0 0 0 3px var(--accent-alpha);
 }
-
 .monthlyArea::placeholder {
   color: var(--text-muted);
 }
-
-/* Note list */
 .noteList {
   display: flex;
   flex-direction: column;
   gap: var(--sp-3);
 }
-
 .noteItem {
   background: var(--bg-elevated);
   border: 1px solid var(--border-subtle);
@@ -113,24 +97,20 @@
   padding: var(--sp-3);
   transition: border-color var(--transition-fast);
 }
-
 .noteItem:hover {
   border-color: var(--border-base);
 }
-
 .noteItemHeader {
   display: flex;
   align-items: center;
   gap: var(--sp-2);
   margin-bottom: var(--sp-2);
 }
-
 .noteDate {
   font-size: 10px;
   color: var(--text-muted);
   flex: 1;
 }
-
 .noteDeleteBtn {
   display: flex;
   align-items: center;
@@ -144,14 +124,11 @@
   cursor: pointer;
   transition: all var(--transition-fast);
 }
-
 .noteDeleteBtn:hover {
   background: rgba(239,68,68,0.12);
   color: #EF4444;
 }
-
 .noteDeleteBtn svg { width: 12px; height: 12px; }
-
 .noteTextarea {
   width: 100%;
   resize: none;
@@ -163,17 +140,13 @@
   color: var(--text-primary);
   min-height: 48px;
 }
-
 .noteTextarea:focus { outline: none; }
-
-/* Add note */
 .addNoteRow {
   display: flex;
   gap: var(--sp-2);
   margin-top: var(--sp-3);
   align-items: flex-start;
 }
-
 .addNoteInput {
   flex: 1;
   background: var(--bg-elevated);
@@ -188,14 +161,11 @@
   max-height: 60px;
   transition: border-color var(--transition-fast);
 }
-
 .addNoteInput:focus {
   outline: none;
   border-color: var(--accent);
 }
-
 .addNoteInput::placeholder { color: var(--text-muted); }
-
 .addBtn {
   display: flex;
   align-items: center;
@@ -210,15 +180,11 @@
   transition: all var(--transition-fast);
   flex-shrink: 0;
 }
-
 .addBtn:hover {
   box-shadow: var(--shadow-glow);
   transform: translateY(-1px);
 }
-
 .addBtn svg { width: 16px; height: 16px; }
-
-/* Empty state */
 .empty {
   display: flex;
   flex-direction: column;
@@ -229,18 +195,14 @@
   color: var(--text-muted);
   text-align: center;
 }
-
 .empty svg { width: 32px; height: 32px; opacity: 0.4; }
 .empty p { font-size: 13px; }
-
-/* No range message */
 .noRangeMsg {
   color: var(--text-muted);
   font-size: 12px;
   text-align: center;
   padding: var(--sp-8) var(--sp-4);
 }
-
 @media (max-width: 767px) {
   .content { max-height: 240px; }
 }

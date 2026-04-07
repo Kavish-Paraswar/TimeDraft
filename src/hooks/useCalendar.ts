@@ -1,10 +1,8 @@
 'use client';
-
 import { useState, useCallback } from 'react';
 import { addMonths, getRangeKey, isSameDay } from '@/utils/dateUtils';
-
 export interface CalendarState {
-  currentMonth: number; // 0-based
+  currentMonth: number; 
   currentYear: number;
   selectedStartDate: Date | null;
   selectedEndDate: Date | null;
@@ -12,7 +10,6 @@ export interface CalendarState {
   selectionStep: 0 | 1 | 2;
   transitionDirection: 'forward' | 'backward';
 }
-
 export interface CalendarActions {
   goToPrevMonth: () => void;
   goToNextMonth: () => void;
@@ -22,7 +19,6 @@ export interface CalendarActions {
   resetSelection: () => void;
   getRangeKeyForCurrentSelection: () => string | null;
 }
-
 export function useCalendar(): CalendarState & CalendarActions {
   const today = new Date();
   const [currentMonth, setCurrentMonth] = useState(today.getMonth());
@@ -32,28 +28,24 @@ export function useCalendar(): CalendarState & CalendarActions {
   const [hoveredDate, setHoveredDate] = useState<Date | null>(null);
   const [selectionStep, setSelectionStep] = useState<0 | 1 | 2>(0);
   const [transitionDirection, setTransitionDirection] = useState<'forward' | 'backward'>('forward');
-
   const goToPrevMonth = useCallback(() => {
     setTransitionDirection('backward');
     const previousDate = addMonths(new Date(currentYear, currentMonth), -1);
     setCurrentMonth(previousDate.getMonth());
     setCurrentYear(previousDate.getFullYear());
   }, [currentMonth, currentYear]);
-
   const goToNextMonth = useCallback(() => {
     setTransitionDirection('forward');
     const nextDate = addMonths(new Date(currentYear, currentMonth), 1);
     setCurrentMonth(nextDate.getMonth());
     setCurrentYear(nextDate.getFullYear());
   }, [currentMonth, currentYear]);
-
   const goToToday = useCallback(() => {
     const now = new Date();
     const prevMonth = currentMonth;
     const prevYear = currentYear;
     const nextMonth = now.getMonth();
     const nextYear = now.getFullYear();
-
     if (nextYear > prevYear || (nextYear === prevYear && nextMonth > prevMonth)) {
       setTransitionDirection('forward');
     } else {
@@ -62,7 +54,6 @@ export function useCalendar(): CalendarState & CalendarActions {
     setCurrentMonth(nextMonth);
     setCurrentYear(nextYear);
   }, [currentMonth, currentYear]);
-
   const handleDateClick = useCallback(
     (date: Date) => {
       if (selectionStep === 0 || selectionStep === 2) {
@@ -86,23 +77,19 @@ export function useCalendar(): CalendarState & CalendarActions {
     },
     [selectionStep, selectedStartDate]
   );
-
   const handleDateHover = useCallback((date: Date | null) => {
     setHoveredDate(date);
   }, []);
-
   const resetSelection = useCallback(() => {
     setSelectedStartDate(null);
     setSelectedEndDate(null);
     setHoveredDate(null);
     setSelectionStep(0);
   }, []);
-
   const getRangeKeyForCurrentSelection = useCallback((): string | null => {
     if (!selectedStartDate || !selectedEndDate) return null;
     return getRangeKey(selectedStartDate, selectedEndDate);
   }, [selectedStartDate, selectedEndDate]);
-
   return {
     currentMonth,
     currentYear,

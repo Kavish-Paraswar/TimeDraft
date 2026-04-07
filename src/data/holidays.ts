@@ -1,15 +1,12 @@
 export interface Holiday {
   name: string;
-  date: string; // MM-DD format
+  date: string; 
   type: 'national' | 'regional' | 'festival';
   color?: string;
 }
-
 export interface HolidayProvider {
   getHolidays(year: number): Holiday[];
 }
-
-// Indian public holidays - fixed dates
 const FIXED_HOLIDAYS: Omit<Holiday, 'date'> & { month: number; day: number }[] = [
   { name: 'New Year', month: 1, day: 1, type: 'national', color: '#FFD700' },
   { name: 'Republic Day', month: 1, day: 26, type: 'national', color: '#FF9933' },
@@ -20,8 +17,6 @@ const FIXED_HOLIDAYS: Omit<Holiday, 'date'> & { month: number; day: number }[] =
   { name: 'Gandhi Jayanti', month: 10, day: 2, type: 'national', color: '#FF9933' },
   { name: 'Christmas', month: 12, day: 25, type: 'national', color: '#C41E3A' },
 ];
-
-// Approximate dates for lunar/variable holidays by year
 const VARIABLE_HOLIDAYS: Record<number, Holiday[]> = {
   2024: [
     { name: 'Holi', date: '03-25', type: 'festival', color: '#FF69B4' },
@@ -63,7 +58,6 @@ const VARIABLE_HOLIDAYS: Record<number, Holiday[]> = {
     { name: 'Guru Nanak Jayanti', date: '11-24', type: 'festival', color: '#FF8C00' },
   ],
 };
-
 export class IndianHolidayProvider implements HolidayProvider {
   getHolidays(year: number): Holiday[] {
     const fixed: Holiday[] = FIXED_HOLIDAYS.map((h) => ({
@@ -72,15 +66,11 @@ export class IndianHolidayProvider implements HolidayProvider {
       type: h.type,
       color: h.color,
     }));
-
     const variable = VARIABLE_HOLIDAYS[year] || VARIABLE_HOLIDAYS[2025];
     return [...fixed, ...variable];
   }
 }
-
-// Default export — swap this for other regions
 export const defaultHolidayProvider: HolidayProvider = new IndianHolidayProvider();
-
 export function getHolidayMap(year: number): Map<string, Holiday> {
   const holidays = defaultHolidayProvider.getHolidays(year);
   const map = new Map<string, Holiday>();

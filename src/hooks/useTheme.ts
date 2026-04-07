@@ -1,22 +1,16 @@
 'use client';
-
 import { useState, useEffect, useCallback } from 'react';
-
 export type ThemeMode = 'light' | 'dark';
-
 export interface ThemeState {
   mode: ThemeMode;
   accentColor: string;
   toggleMode: () => void;
   setAccent: (color: string, gradientFrom: string, gradientTo: string) => void;
 }
-
 const STORAGE_KEY = 'wall-calendar-theme';
-
 export function useTheme(): ThemeState {
   const [mode, setMode] = useState<ThemeMode>('dark');
   const [accentColor, setAccentColor] = useState('#F59E0B');
-
   useEffect(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
@@ -26,7 +20,6 @@ export function useTheme(): ThemeState {
       }
     } catch {}
   }, []);
-
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', mode);
     try {
@@ -35,15 +28,12 @@ export function useTheme(): ThemeState {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ ...parsed, mode }));
     } catch {}
   }, [mode]);
-
   const toggleMode = useCallback(() => {
     setMode((m) => (m === 'dark' ? 'light' : 'dark'));
   }, []);
-
   const setAccent = useCallback(
     (color: string, gradientFrom: string, gradientTo: string) => {
       setAccentColor(color);
-      // Apply CSS variables for dynamic theming
       if (typeof document !== 'undefined') {
         const root = document.documentElement;
         const hexToRgbValues = (hex: string) => {
@@ -61,6 +51,5 @@ export function useTheme(): ThemeState {
     },
     []
   );
-
   return { mode, accentColor, toggleMode, setAccent };
 }

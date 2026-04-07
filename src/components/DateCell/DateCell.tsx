@@ -1,9 +1,7 @@
 'use client';
-
 import { CalendarDay } from '@/utils/dateUtils';
 import { Holiday } from '@/data/holidays';
 import styles from './DateCell.module.css';
-
 interface DateCellProps {
   day: CalendarDay;
   isRangeStart: boolean;
@@ -16,7 +14,6 @@ interface DateCellProps {
   onMouseEnter: (date: Date) => void;
   onMouseLeave: () => void;
 }
-
 export default function DateCell({
   day,
   isRangeStart,
@@ -41,14 +38,11 @@ export default function DateCell({
   ]
     .filter(Boolean)
     .join(' ');
-
   const handleClick = () => {
     if (day.isCurrentMonth) onClick(day.date);
   };
-
   const isSelected = isRangeStart || isRangeEnd;
   const label = `${day.date.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}${holiday ? `, ${holiday.name}` : ''}${isSelected ? ', selected' : ''}${isInRange ? ', in selected range' : ''}`;
-
   return (
     <div
       className={classNames}
@@ -68,8 +62,7 @@ export default function DateCell({
       }}
     >
       <span className={styles.dayNum}>{day.dayOfMonth}</span>
-
-      {/* Indicator dots */}
+      {}
       <div className={styles.badges}>
         {day.isToday && !isSelected && <span className={styles.todayDot} aria-hidden />}
         {hasNote && <span className={styles.noteDot} aria-hidden />}
@@ -81,8 +74,7 @@ export default function DateCell({
           />
         )}
       </div>
-
-      {/* Holiday tooltip */}
+      {}
       {holiday && <span className={styles.holidayLabel}>{holiday.name}</span>}
     </div>
   );

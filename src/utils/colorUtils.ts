@@ -8,24 +8,20 @@ export function hexToRgb(hex: string): { r: number; g: number; b: number } | nul
       }
     : null;
 }
-
 export function rgbToHex(r: number, g: number, b: number): string {
   return '#' + [r, g, b].map((x) => x.toString(16).padStart(2, '0')).join('');
 }
-
 export function adjustLightness(hex: string, amount: number): string {
   const rgb = hexToRgb(hex);
   if (!rgb) return hex;
   const clamp = (v: number) => Math.max(0, Math.min(255, v));
   return rgbToHex(clamp(rgb.r + amount), clamp(rgb.g + amount), clamp(rgb.b + amount));
 }
-
 export function withAlpha(hex: string, alpha: number): string {
   const rgb = hexToRgb(hex);
   if (!rgb) return hex;
   return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
 }
-
 export function getLuminance(hex: string): number {
   const rgb = hexToRgb(hex);
   if (!rgb) return 0;
@@ -35,11 +31,9 @@ export function getLuminance(hex: string): number {
   };
   return 0.2126 * toLinear(rgb.r) + 0.7152 * toLinear(rgb.g) + 0.0722 * toLinear(rgb.b);
 }
-
 export function getContrastColor(hex: string): string {
   return getLuminance(hex) > 0.35 ? '#0f172a' : '#ffffff';
 }
-
 export function applyThemeVars(
   accentColor: string,
   gradientFrom: string,

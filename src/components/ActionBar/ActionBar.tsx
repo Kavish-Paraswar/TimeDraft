@@ -1,9 +1,7 @@
 'use client';
-
 import { CalendarCheck, RotateCcw, Sun, Moon } from 'lucide-react';
 import { ThemeMode } from '@/hooks/useTheme';
 import styles from './ActionBar.module.css';
-
 interface ActionBarProps {
   themeMode: ThemeMode;
   onToggleTheme: () => void;
@@ -11,7 +9,6 @@ interface ActionBarProps {
   onResetSelection: () => void;
   hasSelection: boolean;
 }
-
 export default function ActionBar({
   themeMode,
   onToggleTheme,
@@ -25,14 +22,12 @@ export default function ActionBar({
         <CalendarCheck />
         Today
       </button>
-
       {hasSelection && (
         <button className={styles.btn} onClick={onResetSelection} aria-label="Reset selection">
           <RotateCcw />
           Reset
         </button>
       )}
-
       <button
         className={styles.btn}
         onClick={onToggleTheme}

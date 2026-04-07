@@ -1,9 +1,7 @@
 'use client';
-
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { MONTH_NAMES } from '@/utils/dateUtils';
 import styles from './CalendarHeader.module.css';
-
 interface CalendarHeaderProps {
   month: number;
   year: number;
@@ -11,7 +9,6 @@ interface CalendarHeaderProps {
   onNext: () => void;
   onToday: () => void;
 }
-
 export default function CalendarHeader({ month, year, onPrev, onNext, onToday }: CalendarHeaderProps) {
   return (
     <header className={styles.header} role="navigation" aria-label="Calendar navigation">
@@ -24,12 +21,10 @@ export default function CalendarHeader({ month, year, onPrev, onNext, onToday }:
         >
           <ChevronLeft />
         </button>
-
         <div className={styles.monthYear} aria-live="polite" aria-atomic="true">
           <span className={styles.monthName}>{MONTH_NAMES[month]}</span>
           <span className={styles.yearText}>{year}</span>
         </div>
-
         <button
           className={styles.navBtn}
           onClick={onNext}
@@ -39,7 +34,6 @@ export default function CalendarHeader({ month, year, onPrev, onNext, onToday }:
           <ChevronRight />
         </button>
       </div>
-
       <button
         className={styles.todayBtn}
         onClick={onToday}

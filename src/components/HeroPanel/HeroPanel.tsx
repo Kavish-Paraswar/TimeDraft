@@ -1,19 +1,16 @@
 'use client';
-
 import Image from 'next/image';
 import { Calendar, StickyNote, ChevronRight } from 'lucide-react';
 import { MONTH_NAMES } from '@/utils/dateUtils';
 import { HeroImage } from '@/data/heroImages';
 import styles from './HeroPanel.module.css';
-
 interface HeroPanelProps {
-  month: number; // 0-based
+  month: number; 
   year: number;
   hero: HeroImage;
   rangeLabel: string;
   noteCount: number;
 }
-
 export default function HeroPanel({ month, year, hero, rangeLabel, noteCount }: HeroPanelProps) {
   return (
     <div className={styles.heroPanel}>
@@ -25,19 +22,15 @@ export default function HeroPanel({ month, year, hero, rangeLabel, noteCount }: 
         sizes="(max-width: 767px) 100vw, (max-width: 1023px) 45vw, 38vw"
         className={styles.heroImage}
       />
-
-      {/* Gradient overlay */}
+      {}
       <div className={styles.gradient} />
-
-      {/* Decorative triangles — like the reference image */}
+      {}
       <div className={styles.accentShape1} />
       <div className={styles.accentShape2} />
-
-      {/* Content */}
+      {}
       <div className={styles.content}>
         <p className={styles.yearLabel}>{year}</p>
         <h1 className={styles.monthLabel}>{MONTH_NAMES[month]}</h1>
-
         <div className={styles.stats}>
           <div className={styles.statChip}>
             <Calendar />

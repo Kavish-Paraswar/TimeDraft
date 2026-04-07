@@ -1,13 +1,10 @@
 'use client';
-
 import { useState, useRef } from 'react';
 import { StickyNote, Calendar, Hash, Plus, Trash2, BookOpen } from 'lucide-react';
 import { NotesActions, NotesState, Note } from '@/hooks/useNotes';
 import { formatShortDate, getRangeKey } from '@/utils/dateUtils';
 import styles from './NotesPanel.module.css';
-
 type TabType = 'monthly' | 'range' | 'date';
-
 interface NotesPanelProps {
   notesState: NotesState & NotesActions;
   currentYear: number;
@@ -15,7 +12,6 @@ interface NotesPanelProps {
   selectedStartDate: Date | null;
   selectedEndDate: Date | null;
 }
-
 export default function NotesPanel({
   notesState,
   currentYear,
@@ -26,33 +22,27 @@ export default function NotesPanel({
   const [activeTab, setActiveTab] = useState<TabType>('monthly');
   const [newNoteText, setNewNoteText] = useState('');
   const textareaRef = useRef<HTMLTextAreaElement>(null);
-
   const monthlyMemo = notesState.getMonthlyMemo(currentYear, currentMonth);
   const rangeMemo = notesState.getRangeNote(selectedStartDate, selectedEndDate);
-
   const dateNoteList = Object.entries(notesState.byDate)
     .filter(([key]) => key.startsWith(`${currentYear}-${String(currentMonth + 1).padStart(2, '0')}`))
     .map(([dateKey, notes]) => ({ dateKey, notes: notes as Note[] }));
-
   const rangeBadgeCount = Object.values(notesState.notes || {}).filter(Boolean).length;
   const dateBadgeCount = Object.values(notesState.byDate).flat().length;
-
   const handleAddNote = (type: 'date' | 'range', key: string) => {
     if (!newNoteText.trim()) return;
     notesState.addNote(key, type, newNoteText.trim());
     setNewNoteText('');
   };
-
   const handleKeyDown = (e: React.KeyboardEvent, dateKey: string) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleAddNote('date', dateKey);
     }
   };
-
   return (
     <section className={styles.panel} aria-label="Notes">
-      {/* Tab bar */}
+      {}
       <div className={styles.tabs} role="tablist">
         <button
           role="tab"
@@ -83,11 +73,9 @@ export default function NotesPanel({
           {dateBadgeCount > 0 && <span className={styles.badge}>{dateBadgeCount}</span>}
         </button>
       </div>
-
-      {/* Content */}
+      {}
       <div className={styles.content} role="tabpanel">
-
-        {/* Monthly memo */}
+        {}
         {activeTab === 'monthly' && (
           <textarea
             className={styles.monthlyArea}
@@ -98,8 +86,7 @@ export default function NotesPanel({
             rows={2}
           />
         )}
-
-        {/* Range notes */}
+        {}
         {activeTab === 'range' && (
           <>
             {!selectedStartDate || !selectedEndDate ? (
@@ -112,7 +99,6 @@ export default function NotesPanel({
                   {formatShortDate(selectedStartDate < selectedEndDate ? selectedStartDate : selectedEndDate)} →{' '}
                   {formatShortDate(selectedStartDate < selectedEndDate ? selectedEndDate : selectedStartDate)}
                 </p>
-
                 <textarea
                   className={styles.monthlyArea}
                   placeholder="Jot down notes for this specific date range…"
@@ -125,8 +111,7 @@ export default function NotesPanel({
             )}
           </>
         )}
-
-        {/* Per-date notes */}
+        {}
         {activeTab === 'date' && (
           <>
             {dateNoteList.length === 0 ? (
@@ -159,8 +144,6 @@ export default function NotesPanel({
     </section>
   );
 }
-
-// Sub-component: individual note item
 function NoteItem({
   note,
   onUpdate,
@@ -171,7 +154,6 @@ function NoteItem({
   onDelete: (id: string) => void;
 }) {
   const [text, setText] = useState(note.content);
-
   return (
     <div className={styles.noteItem}>
       <div className={styles.noteItemHeader}>

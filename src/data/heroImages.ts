@@ -1,12 +1,11 @@
 export interface HeroImage {
   src: string;
   alt: string;
-  accentColor: string;      // dominant color for dynamic theming
+  accentColor: string;      
   gradientFrom: string;
   gradientTo: string;
   season: string;
 }
-
 export const HERO_IMAGES: Record<number, HeroImage> = {
   1: {
     src: '/heroes/hero_january.png',
@@ -105,7 +104,6 @@ export const HERO_IMAGES: Record<number, HeroImage> = {
     season: 'winter',
   },
 };
-
 export function getHeroImage(month: number): HeroImage {
   return HERO_IMAGES[month] || HERO_IMAGES[1];
 }

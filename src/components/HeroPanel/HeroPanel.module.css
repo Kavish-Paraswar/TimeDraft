@@ -9,7 +9,6 @@
   flex-direction: column;
   justify-content: flex-end;
 }
-
 .heroImage {
   position: absolute;
   inset: 0;
@@ -20,11 +19,9 @@
   transition: transform 8s ease;
   will-change: transform;
 }
-
 .heroPanel:hover .heroImage {
   transform: scale(1.04);
 }
-
 .gradient {
   position: absolute;
   inset: 0;
@@ -37,7 +34,6 @@
   transition: background var(--transition-slow);
   z-index: 1;
 }
-
 .accentShape1 {
   position: absolute;
   bottom: -20px;
@@ -50,7 +46,6 @@
   z-index: 2;
   transition: background var(--transition-slow);
 }
-
 .accentShape2 {
   position: absolute;
   bottom: -20px;
@@ -63,14 +58,12 @@
   z-index: 2;
   transition: background var(--transition-slow);
 }
-
 .content {
   position: relative;
   z-index: 3;
   padding: var(--sp-5);
   padding-bottom: var(--sp-8);
 }
-
 .yearLabel {
   font-family: var(--font-sans);
   font-size: 12px;
@@ -80,7 +73,6 @@
   color: rgba(255,255,255,0.70);
   margin-bottom: 2px;
 }
-
 .monthLabel {
   font-family: var(--font-display);
   font-size: clamp(24px, 5vw, 40px);
@@ -90,14 +82,12 @@
   letter-spacing: -0.02em;
   text-shadow: 0 2px 20px rgba(0,0,0,0.4);
 }
-
 .stats {
   display: flex;
   gap: var(--sp-4);
   margin-top: var(--sp-4);
   flex-wrap: wrap;
 }
-
 .statChip {
   display: flex;
   align-items: center;
@@ -112,13 +102,11 @@
   color: rgba(255,255,255,0.90);
   white-space: nowrap;
 }
-
 .statChip svg {
   width: 13px;
   height: 13px;
   opacity: 0.8;
 }
-
 @media (max-width: 1023px) {
   .heroPanel {
     min-height: 220px;
@@ -127,7 +115,6 @@
   .accentShape1 { width: 130px; height: 115px; }
   .accentShape2 { width: 100px; height: 90px; left: 80px; }
 }
-
 @media (max-width: 767px) {
   .heroPanel {
     min-height: 200px;

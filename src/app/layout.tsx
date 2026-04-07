@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-
 export const metadata: Metadata = {
   title: 'TimeDraft — Premium Calendar',
   description:
@@ -11,7 +10,6 @@ export const metadata: Metadata = {
     type: 'website',
   },
 };
-
 export default function RootLayout({
   children,
 }: {

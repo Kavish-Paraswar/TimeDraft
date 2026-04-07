@@ -1,21 +1,17 @@
 'use client';
-
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { getRangeKey } from '@/utils/dateUtils';
-
 export interface Note {
   id: string;
   content: string;
   createdAt: string;
   updatedAt: string;
 }
-
 export interface NotesState {
-  byDate: Record<string, Note[]>;   // dateKey → notes
-  notes: Record<string, string>;  // rangeKey → text (matches requested state structure)
-  monthly: Record<string, string>;  // YYYY-MM → memo text
+  byDate: Record<string, Note[]>;   
+  notes: Record<string, string>;  
+  monthly: Record<string, string>;  
 }
-
 export interface NotesActions {
   addNote: (key: string, type: 'date' | 'range' | 'monthly', content: string) => void;
   updateNote: (key: string, type: 'date' | 'range' | 'monthly', noteId: string, content: string) => void;
@@ -27,13 +23,10 @@ export interface NotesActions {
   setMonthlyMemo: (year: number, month: number, text: string) => void;
   noteCount: number;
 }
-
 const STORAGE_KEY = 'wall-calendar-notes';
-
 function generateId(): string {
   return `note-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
 }
-
 function loadFromStorage(): NotesState {
   if (typeof window === 'undefined') return { byDate: {}, notes: {}, monthly: {} };
   try {
@@ -49,17 +42,12 @@ function loadFromStorage(): NotesState {
   } catch {}
   return { byDate: {}, notes: {}, monthly: {} };
 }
-
 export function useNotes(): NotesState & NotesActions {
   const [notesStateObj, setNotesStateObj] = useState<NotesState>({ byDate: {}, notes: {}, monthly: {} });
   const saveTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Load from localStorage on mount
   useEffect(() => {
     setNotesStateObj(loadFromStorage());
   }, []);
-
-  // Debounced save
   const save = useCallback((state: NotesState) => {
     if (saveTimer.current) clearTimeout(saveTimer.current);
     saveTimer.current = setTimeout(() => {
@@ -68,7 +56,6 @@ export function useNotes(): NotesState & NotesActions {
       } catch {}
     }, 400);
   }, []);
-
   const update = useCallback(
     (updater: (prev: NotesState) => NotesState) => {
       setNotesStateObj((prev) => {
@@ -79,7 +66,6 @@ export function useNotes(): NotesState & NotesActions {
     },
     [save]
   );
-
   const addNote = useCallback(
     (key: string, type: 'date' | 'range' | 'monthly', content: string) => {
       const newNote: Note = {
@@ -88,7 +74,6 @@ export function useNotes(): NotesState & NotesActions {
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
       };
-
       update((prev) => {
         if (type === 'monthly') {
           return { ...prev, monthly: { ...prev.monthly, [key]: content } };
@@ -103,7 +88,6 @@ export function useNotes(): NotesState & NotesActions {
     },
     [update]
   );
-
   const updateNote = useCallback(
     (key: string, type: 'date' | 'range' | 'monthly', noteId: string, content: string) => {
       update((prev) => {
@@ -125,7 +109,6 @@ export function useNotes(): NotesState & NotesActions {
     },
     [update]
   );
-
   const deleteNote = useCallback(
     (key: string, type: 'date' | 'range' | 'monthly', noteId?: string) => {
       update((prev) => {
@@ -148,12 +131,10 @@ export function useNotes(): NotesState & NotesActions {
     },
     [update]
   );
-
   const getDateNotes = useCallback(
     (dateKey: string): Note[] => notesStateObj.byDate[dateKey] || [],
     [notesStateObj]
   );
-
   const getRangeNote = useCallback(
     (start: Date | null, end: Date | null): string => {
       if (!start || !end) return '';
@@ -163,7 +144,6 @@ export function useNotes(): NotesState & NotesActions {
     },
     [notesStateObj]
   );
-
   const setRangeNote = useCallback(
     (start: Date | null, end: Date | null, text: string) => {
       if (!start || !end) return;
@@ -181,7 +161,6 @@ export function useNotes(): NotesState & NotesActions {
     },
     [update]
   );
-
   const getMonthlyMemo = useCallback(
     (year: number, month: number): string => {
       const key = `${year}-${String(month + 1).padStart(2, '0')}`;
@@ -189,7 +168,6 @@ export function useNotes(): NotesState & NotesActions {
     },
     [notesStateObj]
   );
-
   const setMonthlyMemo = useCallback(
     (year: number, month: number, text: string) => {
       const key = `${year}-${String(month + 1).padStart(2, '0')}`;
@@ -197,12 +175,10 @@ export function useNotes(): NotesState & NotesActions {
     },
     [update]
   );
-
   const noteCount =
     Object.values(notesStateObj.byDate).flat().length +
     Object.values(notesStateObj.notes).filter(Boolean).length +
     Object.values(notesStateObj.monthly).filter(Boolean).length;
-
   return {
     ...notesStateObj,
     addNote,

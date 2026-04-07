@@ -2,14 +2,12 @@
   position: relative;
   overflow: hidden;
 }
-
 .weekdayRow {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   margin-bottom: var(--sp-1);
   gap: 1px;
 }
-
 .weekdayLabel {
   text-align: center;
   font-size: 11px;
@@ -19,20 +17,16 @@
   color: var(--text-muted);
   padding: var(--sp-1) 0;
 }
-
 .weekdayLabel.weekend {
   color: var(--accent);
   opacity: 0.8;
 }
-
-/* Framer Motion flip variants applied via JS */
 .gridContainer {
   position: relative;
   perspective: 1200px;
   transform-style: preserve-3d;
   display: grid;
 }
-
 .grid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
@@ -42,7 +36,6 @@
   will-change: transform, opacity;
   transform-origin: center center;
 }
-
 @media (max-width: 767px) {
   .weekdayLabel { font-size: 10px; }
   .grid { gap: 2px; }

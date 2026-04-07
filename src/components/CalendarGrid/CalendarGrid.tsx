@@ -1,11 +1,9 @@
 'use client';
-
 import { AnimatePresence, motion } from 'framer-motion';
 import { CalendarDay, WEEKDAY_LABELS, isRangeStart as checkStart, isRangeEnd as checkEnd, isInRange, isInHoverRange } from '@/utils/dateUtils';
 import { Holiday } from '@/data/holidays';
 import DateCell from '../DateCell/DateCell';
 import styles from './CalendarGrid.module.css';
-
 interface CalendarGridProps {
   days: CalendarDay[];
   currentMonth: number;
@@ -19,7 +17,6 @@ interface CalendarGridProps {
   onDateClick: (date: Date) => void;
   onDateHover: (date: Date | null) => void;
 }
-
 const flipVariants = {
   enterForward:  { opacity: 0, rotateY: 90, scale: 0.95 },
   enterBackward: { opacity: 0, rotateY: -90, scale: 0.95 },
@@ -27,7 +24,6 @@ const flipVariants = {
   exitForward:   { opacity: 0, rotateY: -90, scale: 0.95 },
   exitBackward:  { opacity: 0, rotateY: 90, scale: 0.95 },
 };
-
 export default function CalendarGrid({
   days,
   currentMonth,
@@ -43,10 +39,9 @@ export default function CalendarGrid({
 }: CalendarGridProps) {
   const gridKey = `${currentYear}-${currentMonth}`;
   const effectiveEndDate = selectedEndDate || (hoveredDate && selectedStartDate ? hoveredDate : null);
-
   return (
     <div className={styles.wrapper}>
-      {/* Weekday headers */}
+      {}
       <div className={styles.weekdayRow} aria-hidden>
         {WEEKDAY_LABELS.map((label, i) => (
           <div
@@ -57,8 +52,7 @@ export default function CalendarGrid({
           </div>
         ))}
       </div>
-
-      {/* Animated grid */}
+      {}
       <div className={styles.gridContainer}>
         <AnimatePresence initial={false}>
           <motion.div
@@ -73,7 +67,6 @@ export default function CalendarGrid({
           >
             {days.map((day) => {
               const holiday = holidayMap.get(`${day.date.getFullYear()}-${String(day.date.getMonth()+1).padStart(2,'0')}-${String(day.date.getDate()).padStart(2,'0')}`);
-
               return (
                 <DateCell
                   key={day.dateKey}
