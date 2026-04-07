@@ -1,10 +1,11 @@
-# TimeDraft — Premium Interactive Wall Calendar
+# TimeDraft —  Interactive Calendar
 
-A beautifully designed, production-level interactive wall calendar component built with **Next.js 15**, **Framer Motion**, and **Vanilla CSS**. This project translates the physical charm of a printed wall calendar into a fluid, highly functional digital experience, optimized for a single-screen view.
+A beautifully designed interactive calendar component built with **Next.js 15**, **Framer Motion**, and **Vanilla CSS**.
+This project translates the physical charm of a printed wall calendar into a fluid, highly functional digital experience for a single-screen view.
 
 ---
 
-## 🌟 Overview
+## Overview
 
 TimeDraft isn't just a grid of dates—it's a productivity tool designed with a focus on visual excellence and tactile interactions. It features a stunning 12-month hero gallery, dynamic theming that adapts to each month's mood, and a robust notes system for tracking personal milestones and date ranges.
 
@@ -29,7 +30,7 @@ TimeDraft isn't just a grid of dates—it's a productivity tool designed with a 
 *   **State**: React Hooks (useCalendar, useNotes, useTheme, useSwipe)
 *   **Persistence**: localStorage API
 
-## 🏃 How to Run
+## How to Run
 
 1.  **Clone & Install**:
     ```bash
@@ -44,7 +45,7 @@ TimeDraft isn't just a grid of dates—it's a productivity tool designed with a 
 3.  **View App**:
     Open [http://localhost:3000](http://localhost:3000)
 
-## 🧪 Demo Instructions
+##  Demo Instructions
 
 *   **Navigate**: Use the `<` and `>` buttons to trigger the 3D month flip.
 *   **Select Range**: Click one date, hover around to see the preview, and click a second date to lock the range.
