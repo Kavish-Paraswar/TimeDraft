@@ -1,0 +1,155 @@
+.cell {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  user-select: none;
+  transition:
+    background var(--transition-fast),
+    transform var(--transition-fast),
+    box-shadow var(--transition-fast);
+  height: clamp(28px, 5vh, 36px);
+  gap: 2px;
+}
+
+.cell:hover:not(.otherMonth) {
+  background: var(--cal-hover-bg);
+  transform: translateY(-1px);
+}
+
+.cell:active:not(.otherMonth) {
+  transform: scale(0.94);
+}
+
+/* Other month faded */
+.otherMonth {
+  opacity: 0.25;
+  cursor: default;
+  pointer-events: none;
+}
+
+/* Today */
+.today {
+  background: var(--cal-today-bg) !important;
+}
+
+/* Range states */
+.rangeStart,
+.rangeEnd {
+  background: var(--accent) !important;
+  box-shadow: 0 0 0 3px var(--accent-alpha), var(--shadow-glow);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.inRange {
+  background: var(--cal-range-bg);
+  border-radius: 0;
+}
+
+.rangeStart { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+.rangeEnd   { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+
+.rangeStart.rangeEnd {
+  border-radius: var(--radius-md);
+}
+
+/* Hover preview range */
+.hoverRange {
+  background: rgba(var(--accent-rgb), 0.07);
+}
+
+/* Day number */
+.dayNum {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-primary);
+  line-height: 1;
+}
+
+.rangeStart .dayNum,
+.rangeEnd .dayNum {
+  color: var(--accent-contrast);
+  font-weight: 700;
+}
+
+.today .dayNum {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.weekend .dayNum {
+  color: var(--accent);
+  opacity: 0.85;
+}
+
+.rangeStart .weekend,
+.rangeEnd .weekend {
+  color: var(--accent-contrast);
+}
+
+/* Badges row */
+.badges {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  justify-content: center;
+  min-height: 8px;
+}
+
+.todayDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.rangeStart .todayDot,
+.rangeEnd .todayDot {
+  background: var(--accent-contrast);
+}
+
+.noteDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #60A5FA;
+}
+
+.holidayDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+}
+
+/* Holiday badge on hover */
+.holidayLabel {
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-base);
+  border-radius: var(--radius-sm);
+  padding: 3px 8px;
+  font-size: 10px;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: var(--shadow-md);
+  pointer-events: none;
+}
+
+.cell:hover .holidayLabel { display: block; }
+
+@media (max-width: 767px) {
+  .cell { min-height: 28px; border-radius: var(--radius-sm); }
+  .dayNum { font-size: 11px; }
+  .rangeStart { border-radius: var(--radius-sm) 0 0 var(--radius-sm); }
+  .rangeEnd   { border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+  .rangeStart.rangeEnd { border-radius: var(--radius-sm); }
+  .holidayLabel { display: none !important; }
+}

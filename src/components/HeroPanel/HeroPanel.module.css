@@ -1,0 +1,140 @@
+.heroPanel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  overflow: hidden;
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.heroImage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 8s ease;
+  will-change: transform;
+}
+
+.heroPanel:hover .heroImage {
+  transform: scale(1.04);
+}
+
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    transparent 10%,
+    rgba(var(--hero-gradient-from-rgb, 30,58,95), 0.5) 50%,
+    var(--hero-gradient-to, #0f172a) 100%
+  );
+  transition: background var(--transition-slow);
+  z-index: 1;
+}
+
+.accentShape1 {
+  position: absolute;
+  bottom: -20px;
+  left: -20px;
+  width: 180px;
+  height: 160px;
+  background: var(--accent);
+  clip-path: polygon(0 100%, 100% 100%, 50% 0);
+  opacity: 0.75;
+  z-index: 2;
+  transition: background var(--transition-slow);
+}
+
+.accentShape2 {
+  position: absolute;
+  bottom: -20px;
+  left: 100px;
+  width: 140px;
+  height: 130px;
+  background: var(--accent);
+  clip-path: polygon(0 100%, 100% 100%, 50% 0);
+  opacity: 0.50;
+  z-index: 2;
+  transition: background var(--transition-slow);
+}
+
+.content {
+  position: relative;
+  z-index: 3;
+  padding: var(--sp-5);
+  padding-bottom: var(--sp-8);
+}
+
+.yearLabel {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.70);
+  margin-bottom: 2px;
+}
+
+.monthLabel {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 5vw, 40px);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+}
+
+.stats {
+  display: flex;
+  gap: var(--sp-4);
+  margin-top: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.statChip {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius-full);
+  padding: 4px 12px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.90);
+  white-space: nowrap;
+}
+
+.statChip svg {
+  width: 13px;
+  height: 13px;
+  opacity: 0.8;
+}
+
+@media (max-width: 1023px) {
+  .heroPanel {
+    min-height: 220px;
+    border-radius: var(--radius-lg);
+  }
+  .accentShape1 { width: 130px; height: 115px; }
+  .accentShape2 { width: 100px; height: 90px; left: 80px; }
+}
+
+@media (max-width: 767px) {
+  .heroPanel {
+    min-height: 200px;
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .content { padding: var(--sp-4); padding-bottom: var(--sp-8); }
+  .monthLabel { font-size: 32px; }
+  .accentShape1 { width: 110px; height: 100px; }
+  .accentShape2 { width: 85px; height: 77px; left: 65px; }
+}

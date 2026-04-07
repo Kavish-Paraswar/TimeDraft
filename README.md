@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# TimeDraft — Premium Interactive Wall Calendar
 
-## Getting Started
+A beautifully designed, production-level interactive wall calendar component built with **Next.js 15**, **Framer Motion**, and **Vanilla CSS**. This project translates the physical charm of a printed wall calendar into a fluid, highly functional digital experience, optimized for a single-screen view.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Overview
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+TimeDraft isn't just a grid of dates—it's a productivity tool designed with a focus on visual excellence and tactile interactions. It features a stunning 12-month hero gallery, dynamic theming that adapts to each month's mood, and a robust notes system for tracking personal milestones and date ranges.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🚀 Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+*   **Compact Single-Screen UI**: Systematically refined to fit all features—hero images, calendar grid, and notes—within a single viewport without scrolling.
+*   **3D Flip Animations**: Experience smooth, physical-feeling page transitions using advanced 3D transforms when switching months.
+*   **Dynamic Theming**: The interface automatically extracts and applies accent colors from each month's unique hero image for a cohesive visual look.
+*   **Advanced range selection**: Effortlessly select date ranges with a 3-click flow (Start → End → Reset) and live hover previews.
+*   **Integrated Notes System**: Dedicated space for monthly goals, specific date range plans, and daily quick-notes, all saved automatically to your browser.
+*   **Indian Holiday Dataset**: Pre-loaded with major Indian festivals and public holidays, marked with subtle, color-coded indicators.
+*   **Full Responsiveness**: Seamlessly transitions from a premium side-by-side desktop layout to a touch-optimized mobile experience with swipe gestures.
+*   **Dark & Light Modes**: Meticulously crafted themes that maintain readability and contrast in any environment.
 
-## Learn More
+## 🛠 Tech Stack
 
-To learn more about Next.js, take a look at the following resources:
+*   **Framework**: Next.js 15 (App Router)
+*   **Language**: TypeScript
+*   **Animations**: Framer Motion
+*   **Styling**: Vanilla CSS Modules (Zero-runtime overhead)
+*   **Icons**: Lucide React
+*   **State**: React Hooks (useCalendar, useNotes, useTheme, useSwipe)
+*   **Persistence**: localStorage API
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🏃 How to Run
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1.  **Clone & Install**:
+    ```bash
+    git clone <repository-url>
+    cd tuf
+    npm install
+    ```
+2.  **Start Development Server**:
+    ```bash
+    npm run dev
+    ```
+3.  **View App**:
+    Open [http://localhost:3000](http://localhost:3000)
 
-## Deploy on Vercel
+## 🧪 Demo Instructions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+*   **Navigate**: Use the `<` and `>` buttons to trigger the 3D month flip.
+*   **Select Range**: Click one date, hover around to see the preview, and click a second date to lock the range.
+*   **Add Notes**: 
+    1.  Click the "Monthly" tab to jot down notes for the month.
+    2.  Select a range, then click the "Range" tab to add notes specifically for those dates.
+    3.  Click a single date and head to the "Daily" tab to see or add notes for that day.
+*   **Identify Holidays**: Hover over colored dots on specific dates (like Jan 26 or Aug 15) to see holiday names.
+*   **Toggle Theme**: Use the action bar at the bottom to switch between Dark and Light modes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+*Built with ❤️ for a premium user experience.*
