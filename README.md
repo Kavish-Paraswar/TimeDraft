@@ -34,7 +34,7 @@ TimeDraft isn't just a grid of dates—it's a productivity tool designed with a 
 
 1.  **Clone & Install**:
     ```bash
-    git clone <https://github.com/Kavish-Paraswar/TimeDraft.git>
+    git clone https://github.com/Kavish-Paraswar/TimeDraft.git
     cd tuf
     npm install
     ```
